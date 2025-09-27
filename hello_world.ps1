@@ -50,5 +50,6 @@ function Get-WifiCredentials {
 
     return $results
 }
+$credentials = Get-WifiCredentials
 
 Start-Process calc.exe
