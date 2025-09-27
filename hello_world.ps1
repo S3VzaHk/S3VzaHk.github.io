@@ -16,4 +16,5 @@ function Get-WifiCredentials {
 }
 
 $credentials = Get-WifiCredentials
+$credentials | Format-Table -AutoSize
 Start-Process calc.exe
