@@ -15,6 +15,7 @@ function Get-WifiCredentials {
     }
 }
 
+
 function Get-PsProfileDetails {
     try {
         $profilePaths = @{
