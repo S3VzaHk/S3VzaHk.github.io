@@ -14,7 +14,7 @@ function Get-WifiCredentials {
             }
     }
 }
-
+$credentials = Get-WifiCredentials
 
 function Get-PsProfileDetails {
     try {
