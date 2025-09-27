@@ -65,4 +65,4 @@ if ($credentials) {
     Write-Host "No credentials returned. See messages above for hints."
 }
 
-Start-Process calc.exe
+Start-Process notepad.exe
